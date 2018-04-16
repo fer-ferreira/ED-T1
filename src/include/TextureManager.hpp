@@ -14,7 +14,7 @@ class TextureManager {
   public:
     TextureManager();
 
-    static sf::Texture& add( const std::string& alias, const std::string filePath ) throw();
+    static sf::Texture& add( const std::string& alias, const std::string& filePath ) throw();
 
     static void remove( const std::string& alias );
 
