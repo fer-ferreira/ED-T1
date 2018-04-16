@@ -4,7 +4,7 @@
 std::map< std::string, std::pair< std::string, std::unique_ptr< sf::Texture > > >
     TextureManager::texturesMap;
 
-sf::Texture& TextureManager::add( const std::string& alias, const std::string filePath ) throw() {
+sf::Texture& TextureManager::add( const std::string& alias, const std::string& filePath ) throw() {
     auto it = texturesMap.find( alias );
 
     if( it != texturesMap.end() ) {
