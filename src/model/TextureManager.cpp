@@ -18,7 +18,7 @@ sf::Texture& TextureManager::add( const std::string& alias, const std::string& f
 
     texturesMap.insert( std::make_pair( alias, std::make_pair( filePath, std::move( texture ) ) ) );
 
-    return *texture;
+    return get( alias );
 }
 
 void TextureManager::remove( const std::string& alias ) {
