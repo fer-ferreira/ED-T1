@@ -19,5 +19,5 @@ makeDir:
 compile: $(OBJ)
 	$(CC) -o $(OUT) $^ $(CFLAGS) $(LIBS)
 
-run:
-	@./$(OUT)
+run: all
+	@cd bin && ./main
