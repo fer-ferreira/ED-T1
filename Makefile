@@ -4,7 +4,7 @@ IDIR = -I./src/include
 CFLAGS = -Wall -std=c++14 $(IDIR)
 LIBS = -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system
 
-OBJ = src/*.cpp src/model/*.cpp
+OBJ = src/*.cpp src/model/*.cpp src/controller/*.cpp src/viewer/*.cpp
 
 OUT = bin/main
 

@@ -1,11 +1,11 @@
-#include "Pilha.hpp"
-#include <iostream>
+#include "Config.hpp"
+#include "Game.hpp"
 
-int main( int argc, char const *argv[] ) {
-    Pilha< int > pilha( 10 );
-    pilha.empilhar( 1 );
-    pilha.empilhar( 2 );
-    std::cout << pilha.desempilhar() << '\n';
-    std::cout << pilha.desempilhar() << '\n';
+#include <iostream>
+#define SFML_STATIC
+
+int main() {
+    Game game( TITLE, WINDOW_HEIGHT, WINDOW_WIDTH, FRAME_LIMIT );
+    game.run();
     return 0;
 }
