@@ -3,6 +3,7 @@
 
 #define DEFAULT_TEXTURE_PATH "../resources/textures/"
 #define DEFAULT_SOUND_PATH "../resources/sounds/"
+#define DEFAULT_MUSIC_PATH "../resources/musics/"
 
 #define TITLE "Snack Stack"
 
