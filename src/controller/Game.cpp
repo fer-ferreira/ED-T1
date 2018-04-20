@@ -2,10 +2,9 @@
 
 #include "MusicManager.hpp"
 #include "SoundManager.hpp"
-#include "TelaMenu.hpp"
 #include "TextureManager.hpp"
 
-#include <iostream>
+#include "TelaMenu.hpp"
 
 Game::Game( const std::string titulo,
             const int altura,
@@ -14,7 +13,8 @@ Game::Game( const std::string titulo,
     : window( sf::VideoMode( altura, largura ), titulo, sf::Style::Close ) {
     window.setFramerateLimit( limiteDeFrames );
 
-    isAudioOn = true;
+    isAudioOn    = true;
+    estadoJanela = MENU;
 
     loadTextures();
     loadSounds();
@@ -26,7 +26,25 @@ void Game::run() {
     running = true;
 
     TelaMenu menu( &window, &isAudioOn );
-    menu.run();
+
+    while( running ) {
+        switch( estadoJanela ) {
+            case MENU:
+                estadoJanela = menu.run();
+                break;
+            case JOGAR:
+                break;
+            case CREDITOS:
+                break;
+            case GANHOU:
+                break;
+            case PERDEU:
+                break;
+            case FECHAR:
+                running = false;
+                break;
+        }
+    }
 }
 
 void Game::loadTextures() const {

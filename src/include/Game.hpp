@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+#include "Utils.hpp"
+
 class Game {
   private:
     sf::RenderWindow window;
@@ -13,6 +15,8 @@ class Game {
     void loadSounds() const;
 
     bool isAudioOn;
+
+    WINDOW_STATES estadoJanela;
 
   public:
     Game( const std::string titulo, const int altura, const int largura, const int limiteDeFrames );

@@ -9,7 +9,7 @@
 class TelaMenu {
   public:
     TelaMenu( sf::RenderWindow* window, bool* isAudioOn );
-    WINDOW_RETURN run();
+    WINDOW_STATES run();
 
   private:
     sf::RenderWindow* window;

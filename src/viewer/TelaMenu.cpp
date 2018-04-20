@@ -7,9 +7,6 @@
 TelaMenu::TelaMenu( sf::RenderWindow* window, bool* isAudioOn ) {
     this->window    = window;
     this->isAudioOn = isAudioOn;
-
-    loadSprites();
-    loadSounds();
 }
 
 void TelaMenu::loadSprites() {
@@ -25,7 +22,10 @@ void TelaMenu::loadSounds() {
     somClick = SoundManager::get( "choice" );
 }
 
-WINDOW_RETURN TelaMenu::run() {
+WINDOW_STATES TelaMenu::run() {
+    loadSprites();
+    loadSounds();
+
     sf::Time delayTime = sf::milliseconds( 200 );
     sf::Event event;
 
@@ -43,7 +43,7 @@ WINDOW_RETURN TelaMenu::run() {
         while( window->pollEvent( event ) ) {
             if( event.type == sf::Event::Closed ) {
                 window->close();
-                return FECHAR;
+                isRunnig = false;
             }
         }
 
@@ -51,11 +51,11 @@ WINDOW_RETURN TelaMenu::run() {
             sf::Vector2i mousePosition = sf::Mouse::getPosition( *window );
             if( botaoJogar.getGlobalBounds().contains(
                     window->mapPixelToCoords( mousePosition ) ) ) {
-                return CLICK_JOGAR;
+                return JOGAR;
             }
             if( botaoCreditos.getGlobalBounds().contains(
                     window->mapPixelToCoords( mousePosition ) ) ) {
-                return CLICK_CREDITOS;
+                return CREDITOS;
             }
             if( botaoAudio.getGlobalBounds().contains(
                     window->mapPixelToCoords( mousePosition ) ) ) {
@@ -81,5 +81,6 @@ WINDOW_RETURN TelaMenu::run() {
         window->display();
         window->clear();
     }
+
     return FECHAR;
 }
