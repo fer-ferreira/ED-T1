@@ -10,6 +10,9 @@ class Game {
     bool running;
 
     void loadTextures() const;
+    void loadSounds() const;
+
+    bool isAudioOn;
 
   public:
     Game( const std::string titulo, const int altura, const int largura, const int limiteDeFrames );

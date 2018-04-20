@@ -1,6 +1,10 @@
 #include "Game.hpp"
+
+#include "MusicManager.hpp"
+#include "SoundManager.hpp"
+#include "TelaMenu.hpp"
 #include "TextureManager.hpp"
-#include "tela-menu.hpp"
+
 #include <iostream>
 
 Game::Game( const std::string titulo,
@@ -10,15 +14,19 @@ Game::Game( const std::string titulo,
     : window( sf::VideoMode( altura, largura ), titulo, sf::Style::Close ) {
     window.setFramerateLimit( limiteDeFrames );
 
+    isAudioOn = true;
+
     loadTextures();
+    loadSounds();
 
     running = false;
 }
 
 void Game::run() {
     running = true;
-    while( running ) {
-    }
+
+    TelaMenu menu( &window, &isAudioOn );
+    menu.run();
 }
 
 void Game::loadTextures() const {
@@ -32,4 +40,10 @@ void Game::loadTextures() const {
     TextureManager::add( "fundoMenu", "menu.jpg" );
     TextureManager::add( "fundoPerdeu", "gameover.png" );
     TextureManager::add( "fundoGanhou", "gamewin.png" );
+}
+
+void Game::loadSounds() const {
+    SoundManager::add( "choice", "choice.ogg" );
+    SoundManager::add( "empilhar", "empilhar.ogg" );
+    SoundManager::add( "levelPass", "level_pass.ogg" );
 }
